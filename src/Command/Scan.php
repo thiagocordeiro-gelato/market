@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Market\Checkout;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -29,7 +30,13 @@ class Scan extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
-        $skus = explode(',', $input->getArgument('SKUs'));
+        $input = $input->getArgument('SKUs');
+
+        if (!is_string($input)) {
+            throw new Exception('Invalid product input, try bin/console scan -h for help');
+        }
+
+        $skus = explode(',', $input);
 
         foreach ($skus as $sku) {
             $this->checkout->scan($sku);
