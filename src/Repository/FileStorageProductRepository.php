@@ -29,25 +29,6 @@ class FileStorageProductRepository implements ProductLoader
             return null;
         }
 
-        return $this->convertDataToProduct($data);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function loadAll(): array
-    {
-        $products = [];
-
-        foreach ($this->data as $data) {
-            $products[] = $this->convertDataToProduct($data);
-        }
-
-        return $products;
-    }
-
-    private function convertDataToProduct(array $data): Product
-    {
         return new Product($data['sku'], $data['price']);
     }
 }

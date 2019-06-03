@@ -28,9 +28,13 @@ services:
 
     App\Repository\FileStorageOfferRepository: ~
     App\Repository\FileStorageProductRepository: ~
+    App\Repository\RuntimeItemRepository: ~
 
     App\Market\Service\OfferLoader:
         class: 'App\Repository\FileStorageOfferRepository'
 
     App\Market\Service\ProductLoader:
         class: 'App\Repository\FileStorageProductRepository'
+
+    App\Market\Service\ItemSaver:
+        class: 'App\Repository\RuntimeItemRepository'

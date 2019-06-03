@@ -8,15 +8,15 @@ class Offer
     private $sku;
 
     /** @var int */
-    private $quantity;
+    private $amount;
 
     /** @var float */
     private $price;
 
-    public function __construct(string $sku, int $quantity, float $price)
+    public function __construct(string $sku, int $amount, float $price)
     {
         $this->sku = $sku;
-        $this->quantity = $quantity;
+        $this->amount = $amount;
         $this->price = $price;
     }
 
@@ -25,9 +25,9 @@ class Offer
         return $this->sku;
     }
 
-    public function getQuantity(): int
+    public function getAmount(): int
     {
-        return $this->quantity;
+        return $this->amount;
     }
 
     public function getPrice(): float

@@ -21,7 +21,7 @@ class FileStorageOfferRepositoryTest extends TestCase
      */
     public function testLoadBySkuAndQuantity(string $sku, int $quantity, bool $found): void
     {
-        $offer = $this->repository->loadBySkuAndQuantity($sku, $quantity);
+        $offer = $this->repository->loadBySkuAndAmount($sku, $quantity);
 
         $isOffer = $offer instanceof Offer;
 

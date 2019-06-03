@@ -7,9 +7,4 @@ use App\Market\Entity\Product;
 interface ProductLoader
 {
     public function loadBySku(string $sku): ?Product;
-
-    /**
-     * @return Product[]
-     */
-    public function loadAll(): array;
 }

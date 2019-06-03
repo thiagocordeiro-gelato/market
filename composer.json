@@ -38,10 +38,12 @@
     },
     "scripts": {
         "test:unit": "vendor/bin/phpunit --testdox --color=always",
-        "test:stan": "vendor/bin/phpstan analyse src tests --level=max",
+        "test:stan:src": "vendor/bin/phpstan analyse src --level=max",
+        "test:stan:test": "vendor/bin/phpstan analyse tests --level=5",
         "tests" : [
             "@test:unit",
-            "@test:stan"
+            "@test:stan:src",
+            "@test:stan:test"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

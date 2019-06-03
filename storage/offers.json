@@ -1,12 +1,12 @@
 {
   "A": {
     "sku": "A",
-    "quantity": 3,
+    "amount": 3,
     "price": 130
   },
   "B": {
     "sku": "B",
-    "quantity": 2,
+    "amount": 2,
     "price": 45
   }
 }

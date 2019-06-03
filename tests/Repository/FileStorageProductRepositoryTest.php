@@ -29,11 +29,4 @@ class FileStorageProductRepositoryTest extends TestCase
 
         $this->assertNull($product);
     }
-
-    public function testLoadAllProduct(): void
-    {
-        $product = $this->repository->loadAll();
-
-        $this->assertCount(4, $product);
-    }
 }
