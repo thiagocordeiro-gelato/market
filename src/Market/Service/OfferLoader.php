@@ -6,5 +6,5 @@ use App\Market\Entity\Offer;
 
 interface OfferLoader
 {
-    public function loadBySkuAndAmount(string $sku, int $amount): ?Offer;
+    public function loadBySkuAndAmount(string $sku): ?Offer;
 }

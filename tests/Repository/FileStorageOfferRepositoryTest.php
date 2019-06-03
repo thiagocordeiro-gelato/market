@@ -19,9 +19,9 @@ class FileStorageOfferRepositoryTest extends TestCase
     /**
      * @dataProvider loadBySkuAndQuantityDataset
      */
-    public function testLoadBySkuAndQuantity(string $sku, int $quantity, bool $found): void
+    public function testLoadBySkuAndQuantity(string $sku, bool $found): void
     {
-        $offer = $this->repository->loadBySkuAndAmount($sku, $quantity);
+        $offer = $this->repository->loadBySkuAndAmount($sku);
 
         $isOffer = $offer instanceof Offer;
 
@@ -31,11 +31,10 @@ class FileStorageOfferRepositoryTest extends TestCase
     public function loadBySkuAndQuantityDataset(): array
     {
         return [
-            'do not find C with 1 itens' => ['sku' => 'C', 'quantity' => 1, 'found' => false],
-            'do not find A with 1 itens' => ['sku' => 'A', 'quantity' => 1, 'found' => false],
-            'find A with 3 itens' => ['sku' => 'A', 'quantity' => 3, 'found' => true],
-            'find B with 2 itens' => ['sku' => 'B', 'quantity' => 2, 'found' => true],
-            'do not find B with 4 itens' => ['sku' => 'B', 'quantity' => 4, 'found' => false],
+            'Should find rule for A' => ['sku' => 'A', 'found' => true],
+            'Should find rule for B' => ['sku' => 'B', 'found' => true],
+            'Should not find rule for C' => ['sku' => 'C', 'found' => false],
+            'Should not find rule for D' => ['sku' => 'D', 'found' => false],
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Market;
 
 use App\Market\Exception\ProductNotFoundException;
+use App\Market\Service\Price\PriceCalculator;
 use App\Market\Service\ProductLoader;
 use App\Market\Service\Stockable;
 
@@ -14,10 +15,14 @@ class Checkout
     /** @var ProductLoader */
     private $productLoader;
 
-    public function __construct(Stockable $itemStack, ProductLoader $productLoader)
+    /** @var PriceCalculator */
+    private $calculator;
+
+    public function __construct(Stockable $itemStack, ProductLoader $productLoader, PriceCalculator $calculator)
     {
         $this->itemStack = $itemStack;
         $this->productLoader = $productLoader;
+        $this->calculator = $calculator;
     }
 
     public function scan(string $sku): void
@@ -33,13 +38,8 @@ class Checkout
 
     public function total(): float
     {
-        $items = $this->itemStack->getAll();
-        $total = 0;
+        $products = $this->itemStack->getAll();
 
-        foreach ($items as $item) {
-            $total += $item->getPrice();
-        }
-
-        return $total;
+        return $this->calculator->calculate($products);
     }
 }

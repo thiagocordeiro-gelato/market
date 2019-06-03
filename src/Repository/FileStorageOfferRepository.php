@@ -21,7 +21,7 @@ class FileStorageOfferRepository implements OfferLoader
         $this->data = json_decode($content, true);
     }
 
-    public function loadBySkuAndAmount(string $sku, int $amount): ?Offer
+    public function loadBySkuAndAmount(string $sku): ?Offer
     {
         $data = $this->data[$sku] ?? null;
 
@@ -29,12 +29,6 @@ class FileStorageOfferRepository implements OfferLoader
             return null;
         }
 
-        $offer = new Offer($data['sku'], $data['amount'], $data['price']);
-
-        if ($offer->getAmount() != $amount) {
-            return null;
-        }
-
-        return $offer;
+        return new Offer($data['sku'], $data['amount'], $data['price']);
     }
 }
