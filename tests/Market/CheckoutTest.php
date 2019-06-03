@@ -5,14 +5,14 @@ namespace App\Tests\Market;
 use App\Market\Checkout;
 use App\Market\Entity\Product;
 use App\Market\Exception\ProductNotFoundException;
-use App\Market\Service\ItemStack;
 use App\Market\Service\ProductLoader;
+use App\Market\Service\Stockable;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CheckoutTest extends TestCase
 {
-    /** @var ItemStack|MockObject */
+    /** @var Stockable|MockObject */
     private $itemStack;
 
     /** @var ProductLoader|MockObject */
@@ -20,7 +20,7 @@ class CheckoutTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->itemStack = $this->createMock(ItemStack::class);
+        $this->itemStack = $this->createMock(Stockable::class);
         $this->productLoader = $this->createMock(ProductLoader::class);
     }
 
@@ -45,13 +45,12 @@ class CheckoutTest extends TestCase
 
     public function testWhenItemsAreAddedThenGetTotal(): void
     {
-        $product = new Product('C', 20);
         $checkout = new Checkout($this->itemStack, $this->productLoader);
-        $this->productLoader->method('loadBySku')->willReturn($product);
-        $this->itemStack->method('getAll')->willReturn([$product, $product, $product]);
+        $this->productLoader->method('loadBySku')->willReturn(new Product('C', 20));
+        $this->itemStack->method('getAll')->willReturn([new Product('C', 20), new Product('C', 20)]);
 
         $total = $checkout->total();
 
-        $this->assertEquals(60, $total);
+        $this->assertEquals(40, $total);
     }
 }

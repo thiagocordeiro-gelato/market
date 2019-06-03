@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
-use App\Market\Entity\Stocky;
+use App\Market\Entity\Product;
 use App\Market\Service\Stockable;
 
 class RuntimeItemRepository implements Stockable
 {
-    /** @var Stocky[] */
+    /** @var Product[] */
     private $items = [];
 
-    public function add(Stocky $item): void
+    public function add(Product $item): void
     {
         $this->items[$item->getSku()] = $item;
     }

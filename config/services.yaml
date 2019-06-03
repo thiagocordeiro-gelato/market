@@ -36,5 +36,5 @@ services:
     App\Market\Service\ProductLoader:
         class: 'App\Repository\FileStorageProductRepository'
 
-    App\Market\Service\ItemSaver:
+    App\Market\Service\Stockable:
         class: 'App\Repository\RuntimeItemRepository'

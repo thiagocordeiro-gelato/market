@@ -2,7 +2,7 @@
 
 namespace App\Market\Entity;
 
-class Product implements Stocky
+class Product
 {
     /** @var string */
     private $sku;

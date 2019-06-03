@@ -3,18 +3,18 @@
 namespace App\Market;
 
 use App\Market\Exception\ProductNotFoundException;
-use App\Market\Service\ItemStack;
 use App\Market\Service\ProductLoader;
+use App\Market\Service\Stockable;
 
 class Checkout
 {
-    /** @var ItemStack */
+    /** @var Stockable */
     private $itemStack;
 
     /** @var ProductLoader */
     private $productLoader;
 
-    public function __construct(ItemStack $itemStack, ProductLoader $productLoader)
+    public function __construct(Stockable $itemStack, ProductLoader $productLoader)
     {
         $this->itemStack = $itemStack;
         $this->productLoader = $productLoader;

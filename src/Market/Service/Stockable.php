@@ -2,14 +2,14 @@
 
 namespace App\Market\Service;
 
-use App\Market\Entity\Stocky;
+use App\Market\Entity\Product;
 
 interface Stockable
 {
-    public function add(Stocky $item): void;
+    public function add(Product $item): void;
 
     /**
-     * @return Stocky[]
+     * @return Product[]
      */
     public function getAll(): array;
 }
