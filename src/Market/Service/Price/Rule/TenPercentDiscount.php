@@ -10,13 +10,13 @@ class TenPercentDiscount implements Rule
     /**
      * @inheritDoc
      */
-    public function getDifference(MappedProducts $mapped): float
+    public function getDifference(MappedProducts $mapped, float $total): float
     {
-        if ($mapped->getTotal() < 200) {
+        if ($total < 200) {
             return 0;
         }
 
-        $discount = (($mapped->getTotal() / 100) * 10);
+        $discount = (($total / 100) * 10);
 
         return -round($discount, 2);
     }

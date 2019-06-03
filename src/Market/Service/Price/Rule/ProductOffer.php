@@ -19,12 +19,16 @@ class ProductOffer implements Rule
     /**
      * @inheritDoc
      */
-    public function getDifference(MappedProducts $mapped): float
+    public function getDifference(MappedProducts $mapped, float $total): float
     {
         $discount = 0;
 
         foreach ($mapped->getSummaries() as $summary) {
             $offer = $this->offerLoader->loadBySkuAndAmount($summary->getSku());
+
+            if (!$offer) {
+                continue;
+            }
 
             if ($offer->getAmount() > $summary->getAmount()) {
                 continue;

@@ -26,7 +26,7 @@ class PriceCalculator
         $total = $mapped->getTotal();
 
         foreach ($this->rules as $rule) {
-            $total += $rule->getDifference($mapped);
+            $total += $rule->getDifference($mapped, $total);
         }
 
         return $total;

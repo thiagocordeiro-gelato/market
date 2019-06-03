@@ -9,5 +9,5 @@ interface Rule
     /**
      * @param MappedProducts $mapped
      */
-    public function getDifference(MappedProducts $mapped): float;
+    public function getDifference(MappedProducts $mapped, float $total): float;
 }

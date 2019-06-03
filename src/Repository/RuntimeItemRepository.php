@@ -12,7 +12,7 @@ class RuntimeItemRepository implements Stockable
 
     public function add(Product $item): void
     {
-        $this->items[$item->getSku()] = $item;
+        $this->items[] = $item;
     }
 
     /**

@@ -17,8 +17,8 @@ class Sum implements Rule
     /**
      * @param MappedProducts $mapped
      */
-    public function getDifference(MappedProducts $mapped): float
+    public function getDifference(MappedProducts $mapped, float $total): float
     {
-        return -150;
+        return $this->value;
     }
 }

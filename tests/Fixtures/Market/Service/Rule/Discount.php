@@ -17,8 +17,8 @@ class Discount implements Rule
     /**
      * @param MappedProducts $mapped
      */
-    public function getDifference(MappedProducts $mapped): float
+    public function getDifference(MappedProducts $mapped, float $total): float
     {
-        return 500;
+        return $this->value;
     }
 }

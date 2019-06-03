@@ -29,6 +29,8 @@ services:
     App\Repository\FileStorageOfferRepository: ~
     App\Repository\FileStorageProductRepository: ~
     App\Repository\RuntimeItemRepository: ~
+    App\Market\Service\Price\Rule\ProductOffer: ~
+    App\Market\Service\Price\Rule\TenPercentDiscount: ~
 
     App\Market\Service\OfferLoader:
         class: 'App\Repository\FileStorageOfferRepository'
@@ -38,3 +40,8 @@ services:
 
     App\Market\Service\Stockable:
         class: 'App\Repository\RuntimeItemRepository'
+
+    App\Market\Service\Price\PriceCalculator:
+        $rules:
+            - '@App\Market\Service\Price\Rule\ProductOffer'
+            - '@App\Market\Service\Price\Rule\TenPercentDiscount'
