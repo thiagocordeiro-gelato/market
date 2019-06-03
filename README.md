@@ -3,7 +3,11 @@
 Supermarket challenge simulates a user scanning products and according to product/offer rules the value may change
 
 ### How to run
-It can be run in 2 different way:
+First of all, it's necessary to install project dependencies
+
+    composer install
+
+Then it can be executed in 2 different ways:
 
 **via console**
 
