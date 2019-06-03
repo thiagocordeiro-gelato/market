@@ -31,7 +31,7 @@ class ProductOffer implements Rule
             }
 
             $multiplier = floor($summary->getAmount() / $offer->getAmount());
-            $difference = $summary->getPrice() - $offer->getPrice();
+            $difference = ($summary->getUnitPrice() * $offer->getAmount()) - $offer->getPrice();
 
             $discount += $multiplier * $difference;
         }

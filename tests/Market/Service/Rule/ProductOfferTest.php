@@ -36,4 +36,25 @@ class ProductOfferTest extends TestCase
 
         $this->assertEquals(-20, $discount);
     }
+
+    public function testWhenProductMatchManyTimesOfferThenApplyDiscount(): void
+    {
+        $this->offerLoader->method('loadBySkuAndAmount')->willReturn(new Offer('B', 2, 36));
+        $rule = new ProductOffer($this->offerLoader);
+        $mapped = MappedProducts::create([
+            new Product('A', 50),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('B', 20),
+            new Product('C', 10),
+        ]);
+
+        $discount = $rule->getDifference($mapped);
+
+        $this->assertEquals(-12, $discount);
+    }
 }

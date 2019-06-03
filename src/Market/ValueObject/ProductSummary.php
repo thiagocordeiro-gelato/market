@@ -30,6 +30,11 @@ class ProductSummary
         return $this->sku;
     }
 
+    public function getUnitPrice(): float
+    {
+        return $this->unitPrice;
+    }
+
     public function getPrice(): float
     {
         return $this->unitPrice * $this->amount;
