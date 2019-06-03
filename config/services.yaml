@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Repository\FileStorageOfferRepository: ~
+    App\Repository\FileStorageProductRepository: ~
+
+    App\Market\Service\OfferLoader:
+        class: 'App\Repository\FileStorageOfferRepository'
+
+    App\Market\Service\ProductLoader:
+        class: 'App\Repository\FileStorageProductRepository'
