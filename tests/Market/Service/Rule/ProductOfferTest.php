@@ -32,7 +32,7 @@ class ProductOfferTest extends TestCase
             new Product('C', 10),
         ]);
 
-        $discount = $rule->getDifference($mapped);
+        $discount = $rule->getDifference($mapped, $mapped->getTotal());
 
         $this->assertEquals(-20, $discount);
     }
@@ -53,7 +53,7 @@ class ProductOfferTest extends TestCase
             new Product('C', 10),
         ]);
 
-        $discount = $rule->getDifference($mapped);
+        $discount = $rule->getDifference($mapped, $mapped->getTotal());
 
         $this->assertEquals(-12, $discount);
     }

@@ -15,8 +15,9 @@ class TenPercentDiscountTest extends TestCase
     public function testDiscount(float $price, float $expected): void
     {
         $rule = new TenPercentDiscount();
+        $mapped = MappedProducts::create([new Product('A', $price)]);
 
-        $discount = $rule->getDifference(MappedProducts::create([new Product('A', $price)]));
+        $discount = $rule->getDifference($mapped, $mapped->getTotal());
 
         $this->assertEquals($expected, $discount);
     }
