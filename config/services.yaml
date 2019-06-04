@@ -25,3 +25,23 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Repository\FileStorageOfferRepository: ~
+    App\Repository\FileStorageProductRepository: ~
+    App\Repository\RuntimeItemRepository: ~
+    App\Market\Service\Price\Rule\ProductOffer: ~
+    App\Market\Service\Price\Rule\TenPercentDiscount: ~
+
+    App\Market\Service\OfferLoader:
+        class: 'App\Repository\FileStorageOfferRepository'
+
+    App\Market\Service\ProductLoader:
+        class: 'App\Repository\FileStorageProductRepository'
+
+    App\Market\Service\Stockable:
+        class: 'App\Repository\RuntimeItemRepository'
+
+    App\Market\Service\Price\PriceCalculator:
+        $rules:
+            - '@App\Market\Service\Price\Rule\ProductOffer'
+            - '@App\Market\Service\Price\Rule\TenPercentDiscount'
